@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garud Systems | Cybersecurity & Defense Technology</title>
+    <title>Garud Systems | Advanced Cybersecurity & Defense Technology</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --white: #ffffff;
+            --off-white: #f0f0f0;
+            --accent: #00ff00;
+            --accent-alt: #0088ff;
+        }
         
         * {
             margin: 0;
@@ -15,10 +26,11 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            color: #fff;
-            background-color: #000;
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--off-white);
+            background-color: var(--black);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -33,10 +45,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-            padding: 20px 0;
-            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+            backdrop-filter: blur(10px);
         }
         
         .nav-container {
@@ -46,11 +59,16 @@
         }
         
         .logo {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
+            color: var(--white);
+        }
+        
+        .logo span {
+            color: var(--accent);
         }
         
         .nav-links {
@@ -60,22 +78,28 @@
         
         .nav-link {
             text-decoration: none;
-            color: #fff;
-            font-size: 0.9rem;
+            color: var(--off-white);
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             position: relative;
             padding: 5px 0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent);
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 1px;
+            height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #fff;
+            background-color: var(--accent);
             transition: width 0.3s ease;
         }
         
@@ -86,7 +110,7 @@
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
-            color: #fff;
+            color: var(--white);
             background: none;
             border: none;
             cursor: pointer;
@@ -97,6 +121,20 @@
             padding: 100px 0;
         }
         
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .section-title span {
+            color: var(--accent);
+        }
+        
         /* Hero Section */
         #home {
             height: 100vh;
@@ -104,67 +142,87 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-color: #000;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><path d="M0 0L100 100" stroke="%23111" stroke-width="1"/><path d="M100 0L0 100" stroke="%23111" stroke-width="1"/></svg>');
+            background-size: cover;
             position: relative;
             overflow: hidden;
         }
         
         .hero-content {
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
         }
         
         .hero-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 4rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
             text-transform: uppercase;
             letter-spacing: 8px;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--white);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.5rem;
             margin-bottom: 40px;
-            letter-spacing: 2px;
-            color: #ccc;
+            letter-spacing: 3px;
+            color: var(--accent);
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--off-white);
         }
         
         .cta-button {
             display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid #fff;
-            color: #fff;
+            padding: 15px 40px;
+            border: 2px solid var(--accent);
+            color: var(--accent);
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
+            margin: 0 15px;
+            font-family: 'Share Tech Mono', monospace;
         }
         
         .cta-button:hover {
-            background-color: #fff;
-            color: #000;
+            background-color: var(--accent);
+            color: var(--black);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+        
+        .cta-button.secondary {
+            border-color: var(--accent-alt);
+            color: var(--accent-alt);
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: var(--accent-alt);
+            color: var(--black);
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.5);
         }
         
         /* About Section */
         #about {
-            background-color: #000;
-        }
-        
-        .section-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            letter-spacing: 3px;
-            text-align: center;
+            background-color: var(--dark);
+            position: relative;
         }
         
         .about-content {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
         
@@ -174,10 +232,35 @@
         }
         
         .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
             line-height: 1.8;
-            color: #ccc;
+            color: var(--off-white);
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            color: var(--off-white);
         }
         
         .about-visual {
@@ -185,89 +268,231 @@
             min-width: 300px;
             display: flex;
             justify-content: center;
+            position: relative;
         }
         
         .tech-shape {
-            width: 300px;
-            height: 300px;
-            background-color: #111;
+            width: 350px;
+            height: 350px;
+            background-color: var(--gray);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.1);
         }
         
         .tech-shape::before, .tech-shape::after {
             content: '';
             position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 1px solid #333;
+            width: 90%;
+            height: 90%;
+            border: 1px solid var(--accent);
+            opacity: 0.5;
         }
         
         .tech-shape::before {
             transform: rotate(45deg);
+            animation: pulse 5s infinite ease-in-out;
         }
         
         .tech-shape::after {
             transform: rotate(-45deg);
+            animation: pulse 5s infinite ease-in-out reverse;
         }
         
         .inner-circle {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #333;
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2;
+            animation: rotate 20s infinite linear;
+        }
+        
+        .inner-circle::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--accent-alt);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        
+        /* Services Section */
+        #services {
+            background-color: var(--black);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--gray);
+            padding: 40px 30px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--accent-alt);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--white);
+        }
+        
+        .service-description {
+            color: var(--off-white);
+            font-size: 1.1rem;
         }
         
         /* Projects Section */
         #projects {
-            background-color: #000;
+            background-color: var(--dark);
         }
         
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
         }
         
         .project-card {
-            background-color: #111;
+            background: linear-gradient(145deg, var(--gray), var(--dark));
             padding: 30px;
-            border: 1px solid #333;
+            border: 1px solid var(--light-gray);
             transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
         }
         
         .project-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: var(--white);
         }
         
         .project-description {
-            color: #ccc;
-            font-size: 0.95rem;
+            color: var(--off-white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .project-details {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        
+        .project-details li {
+            margin-bottom: 8px;
+            color: var(--off-white);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-details li::before {
+            content: '▸';
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         /* Contact Section */
         #contact {
-            background-color: #000;
+            background-color: var(--black);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--white);
+        }
+        
+        .contact-details {
+            list-style-type: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details li i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
         }
         
         .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+            flex: 1;
+            min-width: 300px;
         }
         
         .form-group {
@@ -279,16 +504,26 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: var(--off-white);
+            font-family: 'Share Tech Mono', monospace;
         }
         
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            background-color: #111;
-            border: 1px solid #333;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
+            padding: 15px;
+            background-color: var(--gray);
+            border: 1px solid var(--light-gray);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
         
         .form-group textarea {
@@ -298,79 +533,98 @@
         
         .submit-btn {
             width: 100%;
-            padding: 15px;
-            background-color: #000;
-            color: #fff;
-            border: 1px solid #fff;
+            padding: 18px;
+            background-color: var(--black);
+            color: var(--accent);
+            border: 2px solid var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
         }
         
         .submit-btn:hover {
-            background-color: #fff;
-            color: #000;
+            background-color: var(--accent);
+            color: var(--black);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
         }
         
         /* Footer */
         footer {
-            background-color: #000;
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid #333;
+            background-color: var(--dark);
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--light-gray);
         }
         
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: #000;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                border-bottom: 1px solid #333;
-            }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-                letter-spacing: 5px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--white);
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: var(--off-white);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--off-white);
+            font-size: 1rem;
         }
         
         /* Animations */
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .fade-in {
+            opacity: 0;
             animation: fadeIn 1s ease-out forwards;
         }
         
@@ -385,19 +639,110 @@
         .delay-3 {
             animation-delay: 0.6s;
         }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+                letter-spacing: 5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 15px auto;
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .tech-shape {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="container nav-container">
-            <div class="logo">GARUD SYSTEMS</div>
+            <div class="logo">GARUD <span>SYSTEMS</span></div>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
@@ -407,20 +752,54 @@
     <!-- Hero Section -->
     <section id="home">
         <div class="container hero-content">
-            <h1 class="hero-title fade-in">GARUD SYSTEMS</h1>
-            <p class="hero-subtitle fade-in delay-1">Be Secure. Establishing. Defending.</p>
-            <a href="#projects" class="cta-button fade-in delay-2">View Our Projects</a>
+            <h1 class="hero-title fade-in">CYBERSECURITY & DEFENSE TECHNOLOGY</h1>
+            <p class="hero-subtitle fade-in delay-1">BE SECURE. ESTABLISHING. DEFENDING.</p>
+            <p class="hero-description fade-in delay-2">
+                Garud Systems provides cutting-edge cybersecurity solutions and defense technology 
+                for governments, military organizations, and critical infrastructure worldwide.
+            </p>
+            <div class="fade-in delay-3">
+                <a href="#contact" class="cta-button">Request Consultation</a>
+                <a href="#projects" class="cta-button secondary">Our Projects</a>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title fade-in">About Us</h2>
+            <h2 class="section-title">About <span>Garud Systems</span></h2>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>Garud Systems is dedicated to cybersecurity research and defense technology innovation. We develop cutting-edge solutions to protect critical infrastructure and national security interests against evolving digital threats.</p>
-                    <p>Our team of experts combines deep technical knowledge with strategic insight to create robust defense systems that establish security perimeters and defend against sophisticated cyber attacks.</p>
+                    <p>
+                        Garud Systems is a premier cybersecurity and defense technology firm established in 2010. 
+                        We specialize in developing advanced security solutions for government agencies, military 
+                        organizations, and critical infrastructure providers.
+                    </p>
+                    <p>
+                        Our team comprises former intelligence community experts, cybersecurity specialists, 
+                        and defense technology engineers with decades of combined experience in protecting 
+                        national security interests from evolving digital threats.
+                    </p>
+                    <p>
+                        We operate with the highest level of security clearance and adhere to strict confidentiality 
+                        protocols to ensure the integrity of our clients' sensitive information and systems.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">13+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">240+</div>
+                            <div class="stat-label">Security Experts</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Client Retention</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-visual fade-in delay-1">
                     <div class="tech-shape">
@@ -431,26 +810,139 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our <span>Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Cyber Defense</h3>
+                    <p class="service-description">
+                        Comprehensive protection against advanced persistent threats, zero-day exploits, 
+                        and sophisticated cyber attacks targeting critical infrastructure.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3 class="service-title">Secure Communications</h3>
+                    <p class="service-description">
+                        Encrypted communication systems with multi-frequency anti-jam technology 
+                        for secure data transmission in contested environments.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">AI-Powered Threat Detection</h3>
+                    <p class="service-description">
+                        Advanced machine learning algorithms that identify, analyze, and neutralize 
+                        cyber threats in real-time with minimal human intervention.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">Data Protection</h3>
+                    <p class="service-description">
+                        Military-grade encryption and secure architecture design for sensitive 
+                        data storage, transmission, and access control systems.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="service-title">Covert Operations</h3>
+                    <p class="service-description">
+                        Specialized cybersecurity solutions for intelligence gathering, 
+                        counterintelligence, and covert digital operations.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="service-title">Network Security</h3>
+                    <p class="service-description">
+                        Next-generation firewall systems, intrusion detection, and prevention 
+                        systems tailored for government and military networks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title fade-in">Our Projects</h2>
+            <h2 class="section-title">Classified <span>Projects</span></h2>
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <h3 class="project-title">Secure Network Protocols</h3>
-                    <p class="project-description">Developing next-generation encrypted communication channels resistant to quantum attacks and intrusion attempts.</p>
+                    <h3 class="project-title">Project AEGIS</h3>
+                    <p class="project-description">
+                        A comprehensive cyber defense system designed to protect critical national 
+                        infrastructure from state-sponsored attacks and cyber warfare campaigns.
+                    </p>
+                    <ul class="project-details">
+                        <li>Multi-layered defense architecture</li>
+                        <li>Real-time threat intelligence integration</li>
+                        <li>AI-driven response automation</li>
+                        <li>Zero-trust security model implementation</li>
+                    </ul>
                 </div>
+                
                 <div class="project-card fade-in delay-1">
-                    <h3 class="project-title">Multi-Frequency Anti-Jam Communication</h3>
-                    <p class="project-description">Creating resilient communication systems that maintain integrity in electronically contested environments.</p>
+                    <h3 class="project-title">Project SPECTRE</h3>
+                    <p class="project-description">
+                        Covert communications network with quantum-resistant encryption for 
+                        secure transmission of classified information across global operations.
+                    </p>
+                    <ul class="project-details">
+                        <li>Quantum key distribution technology</li>
+                        <li>Multi-frequency anti-jam capabilities</li>
+                        <li>Low probability of detection/intercept</li>
+                        <li>Emergency data purge protocols</li>
+                    </ul>
                 </div>
+                
                 <div class="project-card fade-in delay-2">
-                    <h3 class="project-title">AI-driven Cyber Defense</h3>
-                    <p class="project-description">Implementing machine learning algorithms to detect, analyze, and neutralize threats in real-time with minimal human intervention.</p>
+                    <h3 class="project-title">Project VALKYRIE</h3>
+                    <p class="project-description">
+                        Advanced AI-driven cyber threat detection and neutralization system 
+                        capable of identifying zero-day exploits and previously unknown attack vectors.
+                    </p>
+                    <ul class="project-details">
+                        <li>Behavioral anomaly detection</li>
+                        <li>Predictive threat modeling</li>
+                        <li>Autonomous response capabilities</li>
+                        <li>Continuous learning algorithms</li>
+                    </ul>
                 </div>
+                
                 <div class="project-card fade-in delay-3">
-                    <h3 class="project-title">Military Data Security</h3>
-                    <p class="project-description">Designing secure architectures for sensitive military data storage, transmission, and access control.</p>
+                    <h3 class="project-title">Project GRIFFIN</h3>
+                    <p class="project-description">
+                        Secure data infrastructure for military intelligence with multi-level 
+                        security clearance protocols and advanced intrusion countermeasures.
+                    </p>
+                    <ul class="project-details">
+                        <li>Multi-factor authentication system</li>
+                        <li>Air-gapped backup solutions</li>
+                        <li>Physical security integration</li>
+                        <li>Cross-domain security solutions</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -459,29 +951,117 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title fade-in">Contact Us</h2>
-            <form class="contact-form fade-in delay-1">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
+            <h2 class="section-title">Secure <span>Contact</span></h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Communication Channels</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-lock"></i>
+                            <span>Encrypted Email: secure@garudsystems.sec</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>Secure Line: +1-555-238-7462</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Headquarters: 256 Security Way, Washington D.C.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Response Time: Within 24 hours for priority requests</span>
+                        </li>
+                    </ul>
+                    
+                    <p style="margin-top: 30px; font-style: italic;">
+                        All communications are protected by end-to-end encryption and are 
+                        subject to our strict confidentiality protocols.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                
+                <div class="contact-form fade-in delay-1">
+                    <form id="secureContactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Secure Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <select id="priority" required>
+                                <option value="">Select priority</option>
+                                <option value="standard">Standard</option>
+                                <option value="elevated">Elevated</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Encrypted Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Secure Message</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© Garud Systems 2025</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Garud Systems</h4>
+                    <p>Advanced cybersecurity and defense technology solutions for a more secure world.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Cyber Defense</a></li>
+                        <li><a href="#services">Secure Communications</a></li>
+                        <li><a href="#services">Threat Detection</a></li>
+                        <li><a href="#services">Data Protection</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Security Whitepapers</a></li>
+                        <li><a href="#">Threat Intelligence Reports</a></li>
+                        <li><a href="#">Industry Compliance</a></li>
+                        <li><a href="#">Research Publications</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Secure Portal</a></li>
+                        <li><a href="#">Encrypted Messaging</a></li>
+                        <li><a href="#">Security Clearance Verification</a></li>
+                        <li><a href="#">Emergency Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Garud Systems. All rights reserved. | Confidential and Proprietary Information</p>
+            </div>
         </div>
     </footer>
 
@@ -526,10 +1106,10 @@
         });
         
         // Form submission
-        const contactForm = document.querySelector('.contact-form');
+        const contactForm = document.getElementById('secureContactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message. We will contact you soon.');
+            alert('Secure message transmitted. We will contact you through encrypted channels within 24 hours.');
             contactForm.reset();
         });
         
