@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARUD SYSTEMS | MPFHS: Multi-Purpose Frequency Hopping System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles copied from garud.html for visual consistency */
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background-color: #000;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid #111; /* Subtle divider for slides */
+        }
+        
+        .section-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-align: left;
+            border-left: 5px solid #fff;
+            padding-left: 20px;
+        }
+
+        .section-subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        
+        .text-block {
+            margin-bottom: 40px;
+        }
+
+        .list-item {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #ccc;
+        }
+        
+        .list-item::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Hero/Cover Specific */
+        #cover {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            border-bottom: none;
+        }
+
+        .cover-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            color: #ccc;
+        }
+
+        .tagline {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2rem;
+            color: #fff;
+            padding: 10px 0;
+            border-top: 1px dashed #333;
+            border-bottom: 1px dashed #333;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        /* Architecture Flow */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .flow-step {
+            background-color: #111;
+            padding: 15px 25px;
+            border: 1px solid #333;
+            margin: 10px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .arrow {
+            font-size: 1.5rem;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        /* Validation & Math */
+        .validation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .metric-box {
+            background-color: #111;
+            padding: 30px;
+            border: 1px solid #333;
+        }
+        
+        .formula {
+            font-family: serif;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px 0;
+            color: #fff;
+            overflow-x: auto;
+        }
+
+        /* Graph Mockup */
+        .graph-mockup {
+            height: 300px;
+            border: 1px solid #333;
+            background-color: #000;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .graph-mockup::before {
+            content: 'Signal Resilience (%)';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .graph-mockup::after {
+            content: 'Frequency Bands (X-axis)';
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .graph-label {
+            position: absolute;
+            font-size: 0.8rem;
+            font-family: 'Share Tech Mono', monospace;
+            color: #fff;
+            background-color: #000;
+            padding: 2px 5px;
+            border: 1px solid #333;
+        }
+
+        .mpfhs-line { top: 20%; left: 10%; }
+        .fhss-line { top: 70%; left: 60%; }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid #333;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .cover-title {
+                font-size: 3rem;
+                letter-spacing: 5px;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .validation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            opacity: 0; /* Start invisible for animation */
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">GARUD SYSTEMS</div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="garud.html#home" class="nav-link">Home</a>
+                <a href="#mpfhs-cover" class="nav-link active">MPFHS Project</a>
+                <a href="garud.html#projects" class="nav-link">Projects</a>
+                <a href="garud.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide 1 & 2: Cover & Problem -->
+    <section id="mpfhs-cover">
+        <div class="container hero-content">
+            <h1 class="cover-title fade-in">MULTI-PURPOSE FREQUENCY HOPPING SYSTEM</h1>
+            <p class="cover-subtitle fade-in delay-1">(MPFHS)</p>
+            <p class="tagline fade-in delay-2">“Securing Signals. Enabling Superiority.”</p>
+            
+            <div class="text-block fade-in delay-3" style="margin-top: 80px; text-align: left;">
+                <h2 class="section-subtitle" style="text-align: center;">Operational Comms Gaps (Problem)</h2>
+                <div style="max-width: 700px; margin: 0 auto; text-align: left;">
+                    <p class="list-item"><strong>Increasing risk</strong> of hostile interception & jamming (<strong>Denial of Service</strong>).</p>
+                    <p class="list-item">Conventional FHSS lacks <strong>adaptability</strong> across diverse missions.</p>
+                    <p class="list-item">High dependency on <strong>foreign defense technology</strong> for critical communication links.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3 & 5: Solution & Key Features -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Solution: MPFHS</h2>
+            <p class="section-subtitle fade-in delay-1">Adaptive, Sovereign Signal Resilience</p>
+            
+            <div class="text-block fade-in delay-2">
+                <h3 style="font-size: 1.2rem; margin-bottom: 15px;">The MPFHS Advantage:</h3>
+                <p class="list-item"><strong>Adaptive Frequency Hopping</strong> across multiple, non-contiguous spectrums.</p>
+                <p class="list-item"><strong>Modular Design:</strong> Fits handheld radios, long-range UAV links, and tactical vehicle comms.</p>
+                <p class="list-item">Superior <strong>Anti-Jamming (AJ)</strong> and <strong>Low Probability of Intercept (LPI)</strong> capabilities.</p>
+                <p class="list-item">Designed with <strong>indigenous R&D</strong> (<strong>Atmanirbhar Bharat</strong> compliance) for absolute sovereignty.</p>
+            </div>
+
+            <div class="text-block fade-in delay-3">
+                <h3 style="font-size: 1.2rem; margin-bottom: 15px;">Key Features:</h3>
+                <p class="list-item"><strong>Multi-Purpose Deployment:</strong> Seamless integration across military, emergency, and critical infrastructure cyber defense.</p>
+                <p class="list-item"><strong>AI-Driven Frequency Agility:</strong> Predictive algorithm ensures optimal spectrum use and maximizes AJ/LPI uptime.</p>
+                <p class="list-item"><strong>Resilient under EW Conditions:</strong> Tested and validated against sophisticated <strong>Electronic Warfare (EW)</strong> threat profiles.</p>
+                <p class="list-item"><strong>Scalable Architecture:</strong> Supports connectivity from platoon-level patrols to theater-wide operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4 & 6: Technology & Validation -->
+    <section id="technology">
+        <div class="container">
+            <h2 class="section-title fade-in">Technology Architecture</h2>
+            <p class="section-subtitle fade-in delay-1">MPFHS Dynamic Flow & Security Layers</p>
+
+            <!-- Flow Diagram (Slide 4) -->
+            <div class="flow-diagram fade-in delay-2">
+                <div class="flow-step">1. Signal Input (Voice/Data)</div>
+                <div class="arrow">$$ \downarrow $$</div>
+                <div class="flow-step">2. Dynamic Hop Engine (AI-Managed Scheduling)</div>
+                <div class="arrow">$$ \downarrow $$</div>
+                <div class="flow-step">3. Multi-Layer Encryption (High-Assurance Key Management)</div>
+                <div class="arrow">$$ \downarrow $$</div>
+                <div class="flow-step">4. Transmission (Secure, High-Resilience Burst)</div>
+            </div>
+
+            <div class="text-block fade-in delay-3">
+                <h3 style="font-size: 1.2rem; margin-bottom: 15px;">Critical Layers:</h3>
+                <p class="list-item"><strong>Physical Layer Security:</strong> Instantaneous frequency and code switching.</p>
+                <p class="list-item"><strong>Adaptive AI-based Hop Scheduling:</strong> Learns and avoids congested/attacked bands.</p>
+                <p class="list-item"><strong>Cross-platform Compatibility:</strong> Integrates with existing tactical hardware.</p>
+            </div>
+
+            <!-- Validation (Slide 6) -->
+            <h2 class="section-title fade-in delay-4" style="margin-top: 80px;">Technical Validation</h2>
+            <div class="validation-grid">
+                <div class="metric-box fade-in delay-5">
+                    <h3 style="font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; margin-bottom: 10px;">Performance Metric (PM)</h3>
+                    <div class="formula">
+                        $$
+                        PM = 40 \times 1.225 \times 10^2 \times 0.05 \times 0.6 = 147
+                        $$
+                        <p style="font-size: 0.8rem; margin-top: 10px; color: #666;">$40$ = Hop Rate | $1.225 \times 10^2$ = Effective Bandwidth | $0.05$ = Error Tolerance | $0.6$ = Spectral Efficiency</p>
+                    </div>
+                </div>
+                <div class="metric-box fade-in delay-5">
+                    <h3 style="font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; margin-bottom: 10px;">Signal Resilience Mockup</h3>
+                    <div class="graph-mockup">
+                        <span class="graph-label" style="top: 20%; left: 70%; color: limegreen;">MPFHS (75-90%)</span>
+                        <span class="graph-label" style="top: 60%; left: 15%; color: darkred;">Conventional FHSS (30-50%)</span>
+                        <p style="position: absolute; top: 45%; left: 45%; color: #fff;">[GRAPH: MPFHS Outperforms FHSS]</p
