@@ -240,6 +240,9 @@
             padding: 30px;
             border: 1px solid #333;
             transition: all 0.3s ease;
+            display: block; /* Make the link behave like a block element */
+            text-decoration: none; /* Remove underline from the link */
+            color: inherit; /* Inherit text color from body */
         }
         
         .project-card:hover {
@@ -371,6 +374,7 @@
         }
         
         .fade-in {
+            opacity: 0; /* Ensures elements start invisible before animation */
             animation: fadeIn 1s ease-out forwards;
         }
         
@@ -436,22 +440,25 @@
         <div class="container">
             <h2 class="section-title fade-in">Our Projects</h2>
             <div class="projects-grid">
-                <div class="project-card fade-in">
+                <a href="#" class="project-card fade-in">
                     <h3 class="project-title">Secure Network Protocols</h3>
                     <p class="project-description">Developing next-generation encrypted communication channels resistant to quantum attacks and intrusion attempts.</p>
-                </div>
-                <div class="project-card fade-in delay-1">
-                    <h3 class="project-title" href=mpfhss.html>Multi-Frequency Anti-Jam Communication</h3>
+                </a>
+                
+                <!-- Project Card with Link to MPFHS -->
+                <a href="mpfhs_project.html" class="project-card fade-in delay-1">
+                    <h3 class="project-title">Multi-Frequency Anti-Jam Communication</h3>
                     <p class="project-description">Creating resilient communication systems that maintain integrity in electronically contested environments.</p>
-                </div>
-                <div class="project-card fade-in delay-2">
+                </a>
+                
+                <a href="#" class="project-card fade-in delay-2">
                     <h3 class="project-title">AI-driven Cyber Defense</h3>
                     <p class="project-description">Implementing machine learning algorithms to detect, analyze, and neutralize threats in real-time with minimal human intervention.</p>
-                </div>
-                <div class="project-card fade-in delay-3">
+                </a>
+                <a href="#" class="project-card fade-in delay-3">
                     <h3 class="project-title">Military Data Security</h3>
                     <p class="project-description">Designing secure architectures for sensitive military data storage, transmission, and access control.</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -525,11 +532,12 @@
             });
         });
         
-        // Form submission
+        // Form submission (Removed alert() and added a message box style placeholder)
         const contactForm = document.querySelector('.contact-form');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message. We will contact you soon.');
+            // In a real application, you would use a custom modal/notification here instead of alert().
+            console.log('Form submitted. Using console log as a placeholder for a custom UI message.');
             contactForm.reset();
         });
         
